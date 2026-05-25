@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denise & Esteban - Nuestra Boda</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-bg: #f5f2eb; /* Fondo crema idéntico al de tu ilustración */
+            --color-text: #423f3a; /* Tierra oscuro */
+            --color-accent: #967f67; /* Arena rústico */
+            --color-detail: #72846d; /* Verde oliva */
+            --color-light: #eae5da; /* Beige claro para separadores */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.7;
+            text-align: center;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        /* Cabecera limpia con tu ilustración */
+        header {
+            padding: 60px 20px 40px;
+            background-color: var(--color-bg);
+        }
+
+        .main-illustration {
+            max-width: 100%;
+            width: 450px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .names {
+            font-size: 3.5rem;
+            margin: 10px 0 0 0;
+            color: var(--color-text);
+        }
+
+        .wedding-date {
+            font-size: 1.6rem;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 4px;
+            margin: 10px 0;
+            color: var(--color-detail);
+            font-weight: bold;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--color-accent);
+        }
+
+        /* DISEÑO DEL CONTADOR */
+        .countdown-container {
+            margin: 30px auto;
+            max-width: 500px;
+            display: flex;
+            justify-content: space-around;
+            background: rgba(255, 255, 255, 0.4);
+            padding: 20px;
+            border-radius: 4px;
+            border: 1px solid var(--color-light);
+        }
+
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .countdown-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            color: var(--color-text);
+            line-height: 1;
+        }
+
+        .countdown-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-accent);
+            margin-top: 5px;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section {
+            padding: 60px 20px;
+            border-bottom: 1px solid var(--color-light);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            color: var(--color-accent);
+            margin-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: "✦";
+            display: block;
+            font-size: 0.9rem;
+            color: var(--color-detail);
+            margin-top: 5px;
+        }
+
+        .card {
+            background: #fff;
+            padding: 35px 25px;
+            border-radius: 4px;
+            border: 1px solid var(--color-light);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.01);
+            margin-bottom: 30px;
+        }
+
+        /* Mapa en Acuarela */
+        .route-watercolor-box {
+            background: #fff;
+            padding: 25px;
+            border-radius: 4px;
+            border: 1px solid var(--color-light);
+            margin: 40px 0;
+        }
+
+        .route-img {
+            max-width: 100%;
+            width: 550px;
+            height: auto;
+            border-radius: 2px;
+        }
+
+        /* Botones de acción */
+        .btn {
+            display: inline-block;
+            background-color: var(--color-accent);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            border-radius: 4px;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--color-detail);
+        }
+
+        .btn-maps {
+            background-color: transparent;
+            color: var(--color-text);
+            border: 1px solid var(--color-accent);
+            padding: 10px 22px;
+        }
+
+        .btn-maps:hover {
+            background-color: var(--color-accent);
+            color: white;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .grid { grid-template-columns: 1fr; }
+            .names { font-size: 2.5rem; }
+        }
+
+        .copy-box {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #faf8f5;
+            padding: 12px 25px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            border: 1px dashed var(--color-accent);
+        }
+
+        .copy-btn {
+            background: none;
+            border: none;
+            margin-left: 15px;
+            cursor: pointer;
+            color: var(--color-accent);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .copy-btn:hover { color: var(--color-detail); }
+
+        .note {
+            font-size: 0.95rem;
+            font-style: italic;
+            max-width: 550px;
+            margin: 10px auto 0;
+            color: #6e695f;
+        }
+
+        footer {
+            padding: 60px 20px;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            color: #8c857b;
+            text-transform: uppercase;
+            border-top: 1px solid var(--color-light);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="DENISE.jpg" alt="Denise y Esteban" class="main-illustration">
+        
+        <h1 class="names">Denise & Esteban</h1>
+        
+        <div class="wedding-date">SÁBADO, 17 DE OCTUBRE DE 2026</div> 
+        <div class="subtitle">Panamá • Córdoba</div>
+
+        <div class="countdown-container">
+            <div class="countdown-item">
+                <span class="countdown-number" id="days">00</span>
+                <span class="countdown-label">Días</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="hours">00</span>
+                <span class="countdown-label">Horas</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="minutes">00</span>
+                <span class="countdown-label">Min</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="seconds">00</span>
+                <span class="countdown-label">Seg</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <section class="section">
+            <h2 class="section-title">La Ceremonia</h2>
+            <div class="card">
+                <h3>Real Iglesia Conventual de San Agustín</h3>
+                <div style="font-size: 1.3rem; font-family: 'Cormorant Garamond', serif; color: var(--color-detail); margin: 5px 0;">
+                    <strong>Hora: 12:00 md</strong>
+                </div>
+                <p>Plaza de San Agustín, Córdoba, España</p>
+                <a href="https://maps.app.goo.gl/9wcrw3fB7fD2" target="_blank" class="btn btn-maps">Ver ubicación en Google Maps</a>
+            </div>
+        </section>
+
+        <div class="route-watercolor-box">
+            <h3>🚙 El Camino al Cortijo</h3>
+            <p class="note">Ruta aproximada de 20 minutos desde la Iglesia de San Agustín hacia la celebración.</p>
+            <div style="margin: 20px 0;">
+                <img src="ruta-acuarela.jpg" alt="Mapa de la ruta en acuarela" class="route-img" onerror="this.style.display='none'; console.log('Sube tu imagen de acuarela a GitHub')">
+            </div>
+        </div>
+
+        <section class="section">
+            <h2 class="section-title">La Celebración</h2>
+            <div class="card">
+                <h3>Cortijo Santa Rosa</h3>
+                <p>Ctra. de las Ermitas, Córdoba, España</p>
+                <a href="https://maps.app.goo.gl/uX3f7W9jD8K2" target="_blank" class="btn btn-maps">Ver ubicación en Google Maps</a>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Detalles Importantes</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Buses Disponibles</h3>
+                    <p>Tendremos autobuses para trasladarlos cómodamente desde la iglesia directamente hacia el Cortijo Santa Rosa.</p>
+                    <p class="note">Más adelante les daremos los detalles específicos de horarios y puntos de recogida.</p>
+                </div>
+                <div class="card">
+                    <h3>Código de Vestimenta</h3>
+                    <p><strong>Formal</strong></p>
+                    <p class="note">Queremos que luzcan espectaculares. Como sabemos que muchos seres queridos viajan desde el trópico de Panamá, apostamos por un formal relajado y fresco (el lino es una opción ideal).</p>
+                </div>
+            </div>
+            
+            <div class="card" style="margin-top: 30px;">
+                <h3>Sobre los más Pequeños</h3>
+                <p>Es preferible no llevar hijos. Nuestra prioridad es que ustedes descansen, se desconecten y disfruten al máximo de la gran fiesta.</p>
+                <p class="note">Por supuesto, si no tienen la facilidad de dejarlos con los abuelos, ¡están más que bienvenidos a venir a celebrar con nosotros!</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Muestra de Cariño</h2>
+            <p>Su presencia es nuestro mejor regalo. Si desean hacernos una muestra de cariño adicional, agradecemos de corazón su contribución por transferencia bancaria:</p>
+            
+            <div class="copy-box">
+                <span id="account-number">1233435345</span>
+                <button class="copy-btn" onclick="copyAccount()">Copiar</button>
+            </div>
+            <p id="copy-message" style="color: var(--color-detail); font-size: 0.85rem; margin-top: 5px; height: 15px;"></p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Confirmación</h2>
+            <p>Agradecemos que nos confirmes tu asistencia a través del siguiente formulario antes de la fecha límite.</p>
+            <a href="https://forms.gle/wZHrnjNVRE3VjFFv8" target="_blank" class="btn">Confirmar Asistencia</a>
+        </section>
+
+    </div>
+
+    <footer>
+        Denise & Esteban • Uniendo Culturas • 2026
+    </footer>
+
+    <script>
+        // --- 1. CONFIGURACIÓN DEL CONTADOR ---
+        // IMPORTANTE: Cambia esta fecha por el formato exacto de tu boda (Año, Mes-1, Día, Hora, Minutos)
+        // Nota: En JavaScript los meses van del 0 al 11 (Enero es 0, Octubre es 9, Diciembre es 11)
+        const weddingDate = new Date(2026, 9, 17, 12, 0, 0).getTime();
+
+        const timer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            if (distance < 0) {
+                clearInterval(timer);
+                document.querySelector(".countdown-container").innerHTML = "<div class='subtitle'>¡Llegó el gran día!</div>";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+        }, 1000);
+
+        // --- 2. FUNCIÓN COPIAR CUENTA ---
+        function copyAccount() {
+            const accountNumber = document.getElementById('account-number').innerText;
+            navigator.clipboard.writeText(accountNumber).then(() => {
+                const message = document.getElementById('copy-message');
+                message.innerText = "¡Número de cuenta copiado con éxito!";
+                setTimeout(() => { message.innerText = ""; }, 3000);
+            }).catch(err => {
+                console.error('Error al copiar el número: ', err);
+            });
+        }
+    </script>
+
+</body>
+</html>
