@@ -193,12 +193,19 @@
     .copy-msg { margin-top:12px; font-size:13px; color:var(--olive); opacity:0; transition:opacity 0.4s; display:block; }
 
     /* ── RSVP ── */
-    .rsvp-section { background:var(--jungle); padding:100px 28px; text-align:center; }
-    .rsvp-section .eyebrow { color:rgba(251,248,243,0.5); }
-    .rsvp-section .section-title { color:var(--linen); margin-bottom:20px; }
+    .rsvp-section { background:var(--jungle); padding:100px 28px; text-align:center; position:relative; overflow:hidden; }
+    .rsvp-photo {
+      position:absolute; left:0; top:0; bottom:0;
+      width: clamp(180px, 28%, 340px);
+      background-size:cover; background-position:center top;
+      mask-image: linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0) 100%);
+      -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0) 100%);
+    }
+    .rsvp-section .eyebrow { color:rgba(251,248,243,0.5); position:relative; z-index:2; }
+    .rsvp-section .section-title { color:var(--linen); margin-bottom:20px; position:relative; z-index:2; }
     .rsvp-section .section-title em { color:rgba(251,248,243,0.7); }
-    .rsvp-section p { color:rgba(244,239,230,0.65); font-size:16px; max-width:400px; margin:0 auto 36px; line-height:1.8; }
-    .btn-filled { display:inline-block; padding:16px 52px; background:var(--linen); color:var(--jungle); font-size:10px; font-weight:400; letter-spacing:0.45em; text-transform:uppercase; text-decoration:none; font-family:'Jost',sans-serif; transition:all 0.3s; }
+    .rsvp-section p { color:rgba(244,239,230,0.65); font-size:16px; max-width:400px; margin:0 auto 36px; line-height:1.8; position:relative; z-index:2; }
+    .btn-filled { display:inline-block; padding:16px 52px; background:var(--linen); color:var(--jungle); font-size:10px; font-weight:400; letter-spacing:0.45em; text-transform:uppercase; text-decoration:none; font-family:'Jost',sans-serif; transition:all 0.3s; position:relative; z-index:2; }
     .btn-filled:hover { background:var(--dark); color:var(--linen2); }
 
     /* ── FOOTER ── */
@@ -306,6 +313,7 @@
 
 <!-- ══ RSVP ══ -->
 <div class="rsvp-section reveal">
+  <div class="rsvp-photo" id="rsvpPhoto"></div>
   <span class="eyebrow">Confirmación de asistencia</span>
   <h2 class="section-title">¿Vendrás a <em>celebrar</em> con nosotros?</h2>
   <p>Por favor, confirma tu asistencia antes del 1 de septiembre de 2026. Nos ayudará a organizar todo para que sea un día perfecto.</p>
@@ -326,7 +334,7 @@
   document.getElementById('bgCortijo').style.backgroundImage   = "url('cortijo_santa_rosa_acua.jpg')";
   document.getElementById('bgBus').style.backgroundImage       = "url('diablo_rojo_panama.jpg')";
 
-  // Countdown
+  document.getElementById('rsvpPhoto').style.backgroundImage    = "url('novios_acua.jpg')";
   function tick() {
     const diff = new Date('2026-10-17T12:00:00') - new Date();
     if (diff <= 0) { ['cd-days','cd-hours','cd-min','cd-sec'].forEach(id => document.getElementById(id).textContent='00'); return; }
