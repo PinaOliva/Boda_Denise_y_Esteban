@@ -21,82 +21,63 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-end;
       overflow: hidden;
     }
 
-    /* Background image */
     .hero-bg {
-      position: absolute;
-      inset: 0;
-      background-image: var(--hero-img);
-      background-size: cover;
-      background-position: center top;
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center top;
       z-index: 0;
     }
-
-    /* Gradient fade: image → linen color downward */
     .hero-bg::after {
       content: '';
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background: linear-gradient(
         to bottom,
         rgba(251,248,243,0) 0%,
-        rgba(251,248,243,0) 35%,
-        rgba(244,239,230,0.6) 55%,
-        rgba(244,239,230,0.92) 72%,
-        rgba(244,239,230,1) 85%,
+        rgba(251,248,243,0) 30%,
+        rgba(244,239,230,0.5) 52%,
+        rgba(244,239,230,0.9) 68%,
+        rgba(244,239,230,1) 82%,
         var(--linen) 100%
       );
     }
 
     .hero-inner {
-      position: relative;
-      z-index: 2;
+      position: relative; z-index: 2;
       text-align: center;
-      padding: 0 24px 80px;
-      margin-top: auto;
+      padding: 0 24px 72px;
       width: 100%;
     }
 
     .hero-tag {
-      font-size: 10px; font-weight:400; letter-spacing:0.5em;
+      font-size:10px; font-weight:400; letter-spacing:0.5em;
       text-transform:uppercase; color:var(--olive);
-      margin-bottom:20px; display:block;
+      margin-bottom:16px; display:block;
       opacity:0; animation:fadeUp 1s 0.5s forwards;
-      text-shadow: 0 1px 3px rgba(255,255,255,0.6);
     }
-
     .hero-names {
       font-family:'Playfair Display',serif;
-      font-size: clamp(52px,11vw,110px);
+      font-size:clamp(48px,10vw,104px);
       font-weight:400; line-height:1;
       color:var(--dark);
       opacity:0; animation:fadeUp 1.1s 0.7s forwards;
-      white-space: nowrap;
-      text-shadow: 0 2px 20px rgba(244,239,230,0.8);
+      white-space:nowrap;
+      text-shadow:0 2px 24px rgba(244,239,230,0.9);
     }
-
-    .hero-names .amp {
-      font-style:italic; color:var(--sienna);
-      font-size:0.6em;
-      margin: 0 0.15em;
-    }
+    .hero-names .amp { font-style:italic; color:var(--sienna); font-size:0.6em; margin:0 0.15em; }
 
     .hero-date-line {
-      margin-top:28px;
+      margin-top:24px;
       display:flex; align-items:center; justify-content:center; gap:16px;
       opacity:0; animation:fadeUp 1s 1s forwards;
     }
-    .hero-date-line span {
-      font-size:11px; font-weight:400; letter-spacing:0.35em;
-      text-transform:uppercase; color:var(--earth);
-    }
+    .hero-date-line span { font-size:11px; font-weight:400; letter-spacing:0.35em; text-transform:uppercase; color:var(--earth); }
     .hero-date-line .dot { width:4px; height:4px; background:var(--sienna); border-radius:50%; display:inline-block; }
 
     .hero-tagline {
-      margin-top:22px;
+      margin-top:18px;
       font-family:'Libre Baskerville',serif; font-style:italic;
       font-size:clamp(14px,2vw,17px); color:var(--olive);
       opacity:0; animation:fadeUp 1s 1.2s forwards;
@@ -104,12 +85,12 @@
     }
 
     .scroll-down {
-      position:absolute; bottom:16px; left:50%; transform:translateX(-50%);
-      display:flex; flex-direction:column; align-items:center; gap:10px;
+      position:absolute; bottom:14px; left:50%; transform:translateX(-50%);
+      display:flex; flex-direction:column; align-items:center; gap:8px;
       opacity:0; animation:fadeIn 1s 2s forwards; z-index:2;
     }
     .scroll-down span { font-size:9px; letter-spacing:0.4em; text-transform:uppercase; color:var(--olive); }
-    .scroll-arrow { width:1px; height:36px; background:linear-gradient(to bottom, var(--sienna), transparent); animation:pulse 2s infinite; }
+    .scroll-arrow { width:1px; height:30px; background:linear-gradient(to bottom,var(--sienna),transparent); animation:pulse 2s infinite; }
 
     /* ── COUNTDOWN ── */
     .countdown-band { background:var(--dark); padding:72px 24px; text-align:center; }
@@ -120,54 +101,53 @@
     .cd-unit { font-size:9px; font-weight:400; letter-spacing:0.3em; text-transform:uppercase; color:var(--olive); margin-top:8px; display:block; }
     .cd-sep { font-family:'Playfair Display',serif; font-size:clamp(32px,5vw,56px); color:var(--sienna); line-height:1; padding-bottom:28px; }
 
-    /* ── DETALLES SECTION ── */
+    /* ── SECTION ── */
     .section { max-width:900px; margin:0 auto; padding:100px 28px; }
     .eyebrow { font-size:9px; font-weight:400; letter-spacing:0.5em; text-transform:uppercase; color:var(--sienna); display:block; margin-bottom:16px; }
     .section-title { font-family:'Playfair Display',serif; font-size:clamp(30px,5vw,48px); font-weight:400; color:var(--dark); line-height:1.15; margin-bottom:48px; }
     .section-title em { font-style:italic; color:var(--sienna); }
 
-    /* EVENT CARDS with image backgrounds */
-    .event-grid { display:grid; grid-template-columns:1fr 1fr; gap:3px; }
+    /* EVENT CARDS */
+    .event-grid { display:grid; grid-template-columns:1fr 1fr; gap:4px; }
     @media(max-width:600px){ .event-grid { grid-template-columns:1fr; } }
 
     .event-card {
       position:relative; overflow:hidden;
-      min-height: 340px;
-      display: flex; flex-direction:column; justify-content:flex-end;
+      min-height:360px;
+      display:flex; flex-direction:column; justify-content:flex-end;
     }
-
     .event-card-bg {
       position:absolute; inset:0;
       background-size:cover; background-position:center;
-      transition: transform 0.6s ease;
+      transition:transform 0.6s ease;
     }
-    .event-card:hover .event-card-bg { transform: scale(1.04); }
+    .event-card:hover .event-card-bg { transform:scale(1.04); }
 
-    /* Overlay gradient so text is readable */
+    /* Stronger overlay for readability */
     .event-card-overlay {
       position:absolute; inset:0;
       background: linear-gradient(
         to top,
-        rgba(20,12,5,0.88) 0%,
-        rgba(20,12,5,0.55) 50%,
-        rgba(20,12,5,0.15) 100%
+        rgba(10,5,2,0.92) 0%,
+        rgba(10,5,2,0.72) 40%,
+        rgba(10,5,2,0.35) 70%,
+        rgba(10,5,2,0.10) 100%
       );
     }
 
-    .event-card-content {
-      position:relative; z-index:2;
-      padding: 36px 32px;
-    }
+    .event-card-content { position:relative; z-index:2; padding:36px 32px; }
 
+    /* Visible number top-right */
     .event-num {
-      font-family:'Playfair Display',serif; font-size:64px; font-weight:400;
-      color:rgba(255,255,255,0.08); line-height:1;
-      position:absolute; top:16px; right:20px; z-index:2;
+      font-family:'Playfair Display',serif; font-size:52px; font-weight:400;
+      color:rgba(255,255,255,0.18); line-height:1;
+      position:absolute; top:18px; right:22px; z-index:2;
+      letter-spacing:0.02em;
     }
 
-    .event-card h3 { font-size:9px; font-weight:400; letter-spacing:0.45em; text-transform:uppercase; color:var(--olive); margin-bottom:14px; }
+    .event-card h3 { font-size:9px; font-weight:400; letter-spacing:0.45em; text-transform:uppercase; color:var(--sienna); margin-bottom:12px; }
     .event-card .place { font-family:'Playfair Display',serif; font-size:20px; font-weight:400; color:#FBF8F3; line-height:1.3; margin-bottom:10px; }
-    .event-card p { font-size:14px; color:rgba(244,239,230,0.75); line-height:1.65; }
+    .event-card p { font-size:14px; color:rgba(255,255,255,0.82); line-height:1.7; }
     .map-link {
       display:inline-block; margin-top:16px; font-size:9px; font-weight:400;
       letter-spacing:0.35em; text-transform:uppercase; color:var(--sienna);
@@ -175,27 +155,29 @@
     }
     .map-link:hover { opacity:0.6; }
 
-    /* BUS BOX — image card style */
+    /* BUS CARD */
     .bus-card {
-      margin-top: 3px;
-      position: relative; overflow:hidden;
-      min-height: 220px;
-      display:flex; flex-direction:column; justify-content:flex-end;
+      margin-top:4px;
+      position:relative; overflow:hidden;
+      min-height:200px;
+      display:flex; flex-direction:column; justify-content:center;
     }
     .bus-card-bg { position:absolute; inset:0; background-size:cover; background-position:center; transition:transform 0.6s ease; }
     .bus-card:hover .bus-card-bg { transform:scale(1.03); }
     .bus-card-overlay {
       position:absolute; inset:0;
-      background: linear-gradient(to right, rgba(20,12,5,0.85) 0%, rgba(20,12,5,0.5) 60%, rgba(20,12,5,0.15) 100%);
+      background: linear-gradient(
+        to right,
+        rgba(10,5,2,0.90) 0%,
+        rgba(10,5,2,0.75) 45%,
+        rgba(10,5,2,0.30) 100%
+      );
     }
     .bus-card-content {
-      position:relative; z-index:2; padding:40px 44px;
-      display:grid; grid-template-columns:auto 1fr; gap:28px; align-items:start;
+      position:relative; z-index:2; padding:40px 48px;
     }
-    @media(max-width:500px){ .bus-card-content { grid-template-columns:1fr; padding:28px 24px; } }
-    .bus-icon-wrap { width:52px; height:52px; background:var(--sienna); display:flex; align-items:center; justify-content:center; font-size:24px; flex-shrink:0; }
-    .bus-card h3 { font-size:9px; font-weight:400; letter-spacing:0.45em; text-transform:uppercase; color:var(--sienna); margin-bottom:10px; }
-    .bus-card p { font-size:14px; color:rgba(244,239,230,0.75); line-height:1.7; }
+    .bus-card h3 { font-size:9px; font-weight:400; letter-spacing:0.45em; text-transform:uppercase; color:var(--sienna); margin-bottom:12px; }
+    .bus-card p { font-size:14px; color:rgba(255,255,255,0.82); line-height:1.75; max-width:520px; }
 
     /* ── GIFT ── */
     .dark-section { background:var(--dark); padding:100px 28px; text-align:center; }
@@ -223,7 +205,7 @@
     footer { background:var(--white); border-top:1px solid rgba(140,107,74,0.15); padding:64px 28px; text-align:center; }
     .footer-names { font-family:'Playfair Display',serif; font-size:clamp(22px,4vw,34px); font-style:italic; color:var(--dark); }
     .footer-sub { margin-top:14px; font-size:11px; letter-spacing:0.3em; text-transform:uppercase; color:var(--olive); }
-    .footer-flags { margin-top:20px; font-size:28px; letter-spacing:8px; }
+    .footer-divider { margin:20px auto; width:60px; height:1px; background:linear-gradient(to right, transparent, var(--earth), transparent); }
 
     @keyframes fadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
     @keyframes fadeIn { from{opacity:0} to{opacity:1} }
@@ -275,7 +257,6 @@
   <h2 class="section-title">Detalles de la <em>celebración</em></h2>
 
   <div class="event-grid">
-    <!-- Ceremonia -->
     <div class="event-card">
       <div class="event-card-bg" id="bgCeremonia"></div>
       <div class="event-card-overlay"></div>
@@ -287,7 +268,6 @@
         <a class="map-link" href="https://maps.google.com/?q=Real+Iglesia+Conventual+de+San+Agustin" target="_blank">Ver en el mapa →</a>
       </div>
     </div>
-    <!-- Celebración -->
     <div class="event-card">
       <div class="event-card-bg" id="bgCortijo"></div>
       <div class="event-card-overlay"></div>
@@ -301,16 +281,12 @@
     </div>
   </div>
 
-  <!-- Bus — Diablo Rojo background -->
   <div class="bus-card">
     <div class="bus-card-bg" id="bgBus"></div>
     <div class="bus-card-overlay"></div>
     <div class="bus-card-content">
-      <div class="bus-icon-wrap">🚌</div>
-      <div>
-        <h3>Servicio de autobús al cortijo</h3>
-        <p>Para que todos podáis disfrutar sin preocupaciones, contaremos con autobuses que harán el traslado desde la iglesia hasta el Cortijo Santa Rosa. Los detalles del punto de recogida y el horario os llegarán próximamente.</p>
-      </div>
+      <h3>Servicio de autobús al cortijo</h3>
+      <p>Para que todos podáis disfrutar sin preocupaciones, contaremos con autobuses que harán el traslado desde la iglesia hasta el Cortijo Santa Rosa. Los detalles del punto de recogida y el horario os llegarán próximamente.</p>
     </div>
   </div>
 </div>
@@ -338,19 +314,19 @@
 
 <!-- ══ FOOTER ══ -->
 <footer>
-  <div class="footer-flags">🇵🇦 🤍 🇪🇸</div>
+  <div class="footer-divider"></div>
   <div class="footer-names">Denise &amp; Esteban</div>
   <p class="footer-sub">17 · Octubre · MMXXVI · Córdoba</p>
 </footer>
 
 <script>
-  // ── Cargar imágenes con rutas relativas normales ──
-  document.getElementById('heroBg').style.backgroundImage       = "url('panama_cordoba.jpg')";
-  document.getElementById('bgCeremonia').style.backgroundImage  = "url('iglesia_san_agustin_acua.jpg')";
-  document.getElementById('bgCortijo').style.backgroundImage    = "url('cortijo_santa_rosa_acua.jpg')";
-  document.getElementById('bgBus').style.backgroundImage        = "url('diablo_rojo_panama.jpg')";
+  // Imágenes con rutas relativas
+  document.getElementById('heroBg').style.backgroundImage      = "url('panama_cordoba.jpg')";
+  document.getElementById('bgCeremonia').style.backgroundImage = "url('iglesia_san_agustin_acua.jpg')";
+  document.getElementById('bgCortijo').style.backgroundImage   = "url('cortijo_santa_rosa_acua.jpg')";
+  document.getElementById('bgBus').style.backgroundImage       = "url('diablo_rojo_panama.jpg')";
 
-  // ── Countdown ──
+  // Countdown
   function tick() {
     const diff = new Date('2026-10-17T12:00:00') - new Date();
     if (diff <= 0) { ['cd-days','cd-hours','cd-min','cd-sec'].forEach(id => document.getElementById(id).textContent='00'); return; }
@@ -362,13 +338,13 @@
   }
   tick(); setInterval(tick, 1000);
 
-  // ── Scroll reveal ──
+  // Scroll reveal
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  // ── Copy account ──
+  // Copy account
   function copyAcct() {
     navigator.clipboard.writeText('122344444').then(() => {
       const m = document.getElementById('copy-msg');
