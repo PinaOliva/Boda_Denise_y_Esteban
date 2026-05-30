@@ -104,7 +104,7 @@
     }
 
     .scroll-down {
-      position:absolute; bottom:32px; left:50%; transform:translateX(-50%);
+      position:absolute; bottom:16px; left:50%; transform:translateX(-50%);
       display:flex; flex-direction:column; align-items:center; gap:10px;
       opacity:0; animation:fadeIn 1s 2s forwards; z-index:2;
     }
@@ -344,39 +344,11 @@
 </footer>
 
 <script>
-  // ── Load images from uploaded files ──
-  // We use window.fs.readFile to read the uploaded images and convert to object URLs
-  async function loadImages() {
-    const files = [
-      { id: 'heroBg',      name: 'panama_cordoba',           prop: 'backgroundImage', el: document.getElementById('heroBg') },
-      { id: 'bgCeremonia', name: 'iglesia_san_agustin_acua', prop: 'backgroundImage', el: document.getElementById('bgCeremonia') },
-      { id: 'bgCortijo',   name: 'cortijo_santa rosa_acua',  prop: 'backgroundImage', el: document.getElementById('bgCortijo') },
-      { id: 'bgBus',       name: 'diablo_rojo_panama',       prop: 'backgroundImage', el: document.getElementById('bgBus') },
-    ];
-
-    // Map the names to the actual uploaded filenames (with extension guessing)
-    const extensions = ['jpg','jpeg','png','webp','gif'];
-
-    for (const f of files) {
-      let loaded = false;
-      for (const ext of extensions) {
-        try {
-          const data = await window.fs.readFile(`${f.name}.${ext}`);
-          const blob = new Blob([data]);
-          const url  = URL.createObjectURL(blob);
-          f.el.style.backgroundImage = `url('${url}')`;
-          loaded = true;
-          break;
-        } catch(e) { /* try next ext */ }
-      }
-      if (!loaded) {
-        // fallback solid colour so layout stays intact
-        f.el.style.background = '#2A1F14';
-      }
-    }
-  }
-
-  loadImages();
+  // ── Cargar imágenes con rutas relativas normales ──
+  document.getElementById('heroBg').style.backgroundImage       = "url('panama_cordoba.jpg')";
+  document.getElementById('bgCeremonia').style.backgroundImage  = "url('iglesia_san_agustin_acua.jpg')";
+  document.getElementById('bgCortijo').style.backgroundImage    = "url('cortijo_santa_rosa_acua.jpg')";
+  document.getElementById('bgBus').style.backgroundImage        = "url('diablo_rojo_panama.jpg')";
 
   // ── Countdown ──
   function tick() {
