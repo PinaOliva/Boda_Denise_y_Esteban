@@ -44,6 +44,13 @@
       );
     }
 
+    /* Ajuste para móviles: el hero ocupa menos altura para que la imagen
+       no se vea tan ampliada/recortada en pantallas verticales */
+    @media (max-width: 640px) {
+      .hero { min-height: 62vh; }
+      .hero-bg { background-position: center 25%; }
+    }
+
     .hero-inner {
       position: relative; z-index: 2;
       text-align: center;
@@ -92,6 +99,16 @@
     .scroll-down span { font-size:9px; letter-spacing:0.4em; text-transform:uppercase; color:var(--olive); }
     .scroll-arrow { width:1px; height:30px; background:linear-gradient(to bottom,var(--sienna),transparent); animation:pulse 2s infinite; }
 
+    /* ── FADE DIVIDERS ── */
+    .fade-divider {
+      width: 100%;
+      height: clamp(50px, 8vw, 100px);
+    }
+    .fade-linen-dark   { background: linear-gradient(to bottom, var(--linen),  var(--dark)); }
+    .fade-dark-linen   { background: linear-gradient(to bottom, var(--dark),   var(--linen)); }
+    .fade-dark-jungle  { background: linear-gradient(to bottom, var(--dark),   var(--jungle)); }
+    .fade-jungle-white { background: linear-gradient(to bottom, var(--jungle), var(--white)); }
+
     /* ── COUNTDOWN ── */
     .countdown-band { background:var(--dark); padding:72px 24px; text-align:center; }
     .countdown-eyebrow { font-size:9px; font-weight:400; letter-spacing:0.5em; text-transform:uppercase; color:var(--sienna); margin-bottom:36px; display:block; }
@@ -106,6 +123,11 @@
     .eyebrow { font-size:9px; font-weight:400; letter-spacing:0.5em; text-transform:uppercase; color:var(--sienna); display:block; margin-bottom:16px; }
     .section-title { font-family:'Playfair Display',serif; font-size:clamp(30px,5vw,48px); font-weight:400; color:var(--dark); line-height:1.15; margin-bottom:48px; }
     .section-title em { font-style:italic; color:var(--sienna); }
+
+    .section-intro {
+      font-size:15px; color:var(--clay); line-height:1.85;
+      max-width:640px; margin:-24px 0 44px;
+    }
 
     /* EVENT CARDS */
     .event-grid { display:grid; grid-template-columns:1fr 1fr; gap:4px; }
@@ -123,7 +145,6 @@
     }
     .event-card:hover .event-card-bg { transform:scale(1.04); }
 
-    /* Stronger overlay for readability */
     .event-card-overlay {
       position:absolute; inset:0;
       background: linear-gradient(
@@ -137,7 +158,6 @@
 
     .event-card-content { position:relative; z-index:2; padding:36px 32px; }
 
-    /* Visible number top-right */
     .event-num {
       font-family:'Playfair Display',serif; font-size:52px; font-weight:400;
       color:rgba(255,255,255,0.18); line-height:1;
@@ -178,6 +198,32 @@
     }
     .bus-card h3 { font-size:9px; font-weight:400; letter-spacing:0.45em; text-transform:uppercase; color:var(--sienna); margin-bottom:12px; }
     .bus-card p { font-size:14px; color:rgba(255,255,255,0.82); line-height:1.75; max-width:520px; }
+
+    /* STAY (HOSPEDAJE) CARDS */
+    .stay-grid { display:grid; grid-template-columns:1fr 1fr; gap:3px; }
+    @media(max-width:600px){ .stay-grid { grid-template-columns:1fr; } }
+
+    .stay-card {
+      background:var(--linen2);
+      padding:36px 34px;
+      position:relative;
+    }
+    .stay-card::after {
+      content:'';
+      position:absolute; bottom:0; left:34px; right:34px; height:1px;
+      background: linear-gradient(to right, var(--earth), transparent);
+    }
+    .stay-card h3 {
+      font-family:'Playfair Display',serif; font-size:19px; font-weight:400;
+      color:var(--dark); margin-bottom:10px; line-height:1.3;
+    }
+    .stay-card p { font-size:14px; color:var(--clay); line-height:1.7; margin-bottom:18px; }
+    .stay-link {
+      display:inline-block; font-size:9px; font-weight:400; letter-spacing:0.35em;
+      text-transform:uppercase; color:var(--earth); text-decoration:none;
+      border-bottom:1px solid var(--sienna); padding-bottom:2px; transition:opacity 0.25s;
+    }
+    .stay-link:hover { opacity:0.55; }
 
     /* ── GIFT ── */
     .dark-section { background:var(--dark); padding:100px 28px; text-align:center; }
@@ -298,6 +344,48 @@
   </div>
 </div>
 
+<!-- ══ ALOJAMIENTO ══ -->
+<div class="section reveal">
+  <span class="eyebrow">Para quienes venís de fuera</span>
+  <h2 class="section-title">¿Dónde <em>alojarse</em>?</h2>
+  <p class="section-intro">Para vivir la experiencia completa, recomendamos alojarse en zonas céntricas y bien conectadas de la ciudad, como Santa Marina, Plaza de Colón, Plaza de las Tendillas, Plaza de Capuchinos, o las calles Gondomar y Cruz Conde. Desde cualquiera de estas áreas tendréis cerca tiendas, restaurantes y buena comunicación para moveros por Córdoba. Para llegar al Cortijo Santa Rosa el día de la boda, contaremos con el autobús ya mencionado.</p>
+
+  <div class="stay-grid">
+    <div class="stay-card">
+      <h3>Santa Marina</h3>
+      <p>Barrio con encanto y ambiente local, muy cerca del centro, con buena oferta de alojamientos a precios accesibles.</p>
+      <a class="stay-link" href="https://www.booking.com/searchresults.html?ss=Santa+Marina%2C+Cordoba" target="_blank">Ver alojamientos →</a>
+    </div>
+    <div class="stay-card">
+      <h3>Plaza de Colón</h3>
+      <p>Amplia plaza muy bien comunicada, junto a los Jardines de la Agricultura, con fácil acceso a las líneas de autobús urbano.</p>
+      <a class="stay-link" href="https://www.booking.com/searchresults.html?ss=Plaza+de+Colon%2C+Cordoba" target="_blank">Ver alojamientos →</a>
+    </div>
+    <div class="stay-card">
+      <h3>Plaza de las Tendillas</h3>
+      <p>El corazón comercial de Córdoba, rodeado de tiendas, cafeterías y restaurantes. Todo queda a un paso a pie.</p>
+      <a class="stay-link" href="https://www.booking.com/searchresults.html?ss=Plaza+de+las+Tendillas%2C+Cordoba" target="_blank">Ver alojamientos →</a>
+    </div>
+    <div class="stay-card">
+      <h3>Plaza de Capuchinos</h3>
+      <p>Zona tranquila y céntrica, conocida por el Cristo de los Faroles, con encanto y buena conexión con el resto de la ciudad.</p>
+      <a class="stay-link" href="https://www.booking.com/searchresults.html?ss=Plaza+de+Capuchinos%2C+Cordoba" target="_blank">Ver alojamientos →</a>
+    </div>
+    <div class="stay-card">
+      <h3>Calle Gondomar</h3>
+      <p>Calle céntrica y comercial, muy cerca de Tendillas, ideal para quienes buscan estar en pleno ambiente urbano.</p>
+      <a class="stay-link" href="https://www.booking.com/searchresults.html?ss=Calle+Gondomar%2C+Cordoba" target="_blank">Ver alojamientos →</a>
+    </div>
+    <div class="stay-card">
+      <h3>Calle Cruz Conde</h3>
+      <p>Una de las principales calles comerciales de la ciudad, llena de tiendas y vida, a un paso del centro.</p>
+      <a class="stay-link" href="https://www.booking.com/searchresults.html?ss=Calle+Cruz+Conde%2C+Cordoba" target="_blank">Ver alojamientos →</a>
+    </div>
+  </div>
+</div>
+
+<div class="fade-divider fade-linen-dark"></div>
+
 <!-- ══ REGALO ══ -->
 <div class="dark-section reveal">
   <span class="eyebrow">Vuestra contribución</span>
@@ -311,6 +399,8 @@
   <span class="copy-msg" id="copy-msg">¡Copiado! 🌿</span>
 </div>
 
+<div class="fade-divider fade-dark-jungle"></div>
+
 <!-- ══ RSVP ══ -->
 <div class="rsvp-section reveal">
   <div class="rsvp-photo" id="rsvpPhoto"></div>
@@ -319,6 +409,8 @@
   <p>Por favor, confirma tu asistencia antes del 1 de septiembre de 2026. Nos ayudará a organizar todo para que sea un día perfecto.</p>
   <a class="btn-filled" href="https://forms.gle/ao8Anf6qGcQQ2ABZA" target="_blank">Confirmar asistencia</a>
 </div>
+
+<div class="fade-divider fade-jungle-white"></div>
 
 <!-- ══ FOOTER ══ -->
 <footer>
@@ -333,8 +425,9 @@
   document.getElementById('bgCeremonia').style.backgroundImage = "url('iglesia_san_agustin_acua.jpg')";
   document.getElementById('bgCortijo').style.backgroundImage   = "url('cortijo_santa_rosa_acua.jpg')";
   document.getElementById('bgBus').style.backgroundImage       = "url('diablo_rojo_panama.jpg')";
+  document.getElementById('rsvpPhoto').style.backgroundImage   = "url('novios_acua.jpg')";
 
-  document.getElementById('rsvpPhoto').style.backgroundImage    = "url('novios_acua.jpg')";
+  // Countdown
   function tick() {
     const diff = new Date('2026-10-17T12:00:00') - new Date();
     if (diff <= 0) { ['cd-days','cd-hours','cd-min','cd-sec'].forEach(id => document.getElementById(id).textContent='00'); return; }
