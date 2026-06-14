@@ -44,11 +44,41 @@
       );
     }
 
-    /* Ajuste para móviles: el hero ocupa menos altura para que la imagen
-       no se vea tan ampliada/recortada en pantallas verticales */
+    /* Ajuste para móviles: la imagen mantiene su proporción real (sin recorte/zoom)
+       y el texto pasa a un bloque independiente con fondo lino, debajo de la foto */
     @media (max-width: 640px) {
-      .hero { min-height: 62vh; }
-      .hero-bg { background-position: center 25%; }
+      .hero {
+        min-height: auto;
+        overflow: visible;
+        justify-content: flex-start;
+      }
+      .hero-bg {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 5 / 4;
+        background-position: center center;
+      }
+      .hero-bg::after {
+        background: linear-gradient(to bottom, rgba(244,239,230,0) 65%, var(--linen) 100%);
+      }
+      .hero-inner {
+        position: relative;
+        padding: 36px 24px 40px;
+      }
+      .hero-names {
+        font-size: clamp(34px, 12vw, 56px);
+        white-space: normal;
+        line-height: 1.15;
+      }
+      .hero-date-line {
+        flex-wrap: wrap;
+        row-gap: 8px;
+      }
+      .hero-date-line span {
+        font-size: 9px;
+        letter-spacing: 0.25em;
+      }
+      .scroll-down { display: none; }
     }
 
     .hero-inner {
